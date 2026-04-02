@@ -1,0 +1,1552 @@
+/* ============================================ */
+/* RESET Y ESTILOS BASE                         */
+/* ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f2f2f2;
+    color: #1a1a1a;
+    line-height: 1.4;
+    padding: 16px;
+}
+
+/* ============================================ */
+/* HEADER Y LOGO                                */
+/* ============================================ */
+header {
+    max-width: 800px;
+    margin: 0 auto 24px auto;
+    text-align: center;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 16px;
+}
+
+.logo h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #e44d26;
+    letter-spacing: -0.5px;
+}
+
+.slogan {
+    font-size: 14px;
+    color: #666;
+    margin-top: 4px;
+}
+
+/* ============================================ */
+/* BUSCADOR                                     */
+/* ============================================ */
+.buscador-container {
+    max-width: 800px;
+    margin: 0 auto 20px auto;
+    position: relative;
+}
+
+.buscador {
+    display: flex;
+    gap: 8px;
+    background: white;
+    border-radius: 50px;
+    padding: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border: 1px solid #e0e0e0;
+}
+
+.buscador input {
+    flex: 1;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 50px;
+    font-size: 14px;
+    outline: none;
+    background: transparent;
+}
+
+.buscador input:focus {
+    outline: none;
+}
+
+.buscador button {
+    background: #e44d26;
+    color: white;
+    border: none;
+    padding: 8px 24px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.buscador button:hover {
+    background: #c43c1a;
+}
+
+/* Resultados de búsqueda */
+.resultados-busqueda {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border-radius: 12px;
+    margin-top: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border: 1px solid #e0e0e0;
+    max-height: 400px;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+}
+
+.resultados-busqueda.activo {
+    display: block;
+}
+
+.resultado-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border-bottom: 1px solid #f0f0f0;
+    cursor: pointer;
+    transition: background 0.2s;
+    text-decoration: none;
+    color: inherit;
+}
+
+.resultado-item:hover {
+    background: #f9f9f9;
+}
+
+.resultado-item img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 8px;
+    background-color: #f0f0f0;
+    display: block;
+}
+
+.resultado-info {
+    flex: 1;
+}
+
+.resultado-info h4 {
+    font-size: 14px;
+    margin-bottom: 4px;
+    color: #333;
+}
+
+.resultado-precio {
+    font-size: 13px;
+    font-weight: bold;
+    color: #e44d26;
+}
+
+.resultado-ubicacion {
+    font-size: 11px;
+    color: #777;
+    margin-top: 2px;
+}
+
+.sin-resultados {
+    padding: 20px;
+    text-align: center;
+    color: #777;
+    font-size: 14px;
+}
+
+/* ============================================ */
+/* FILTROS                                      */
+/* ============================================ */
+.filtros {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin: 20px auto;
+    flex-wrap: wrap;
+}
+
+.filtro-btn {
+    background: white;
+    border: 1px solid #e44d26;
+    color: #e44d26;
+    padding: 8px 16px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.filtro-btn.activo,
+.filtro-btn:hover {
+    background: #e44d26;
+    color: white;
+}
+
+/* ============================================ */
+/* CONTENEDOR DE PRODUCTOS (Una columna)        */
+/* ============================================ */
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* ============================================ */
+/* TARJETA DE PRODUCTO                          */
+/* ============================================ */
+.producto {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    transition: all 0.2s ease;
+    border: 1px solid #eaeaea;
+}
+
+.producto:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+}
+
+.producto img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+    background-color: #f5f5f5;
+}
+
+.info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.info h3 {
+    font-size: 17px;
+    font-weight: 600;
+    color: #222;
+    margin: 0;
+    line-height: 1.3;
+}
+
+.precio {
+    font-size: 20px;
+    font-weight: 700;
+    color: #e44d26;
+    margin: 4px 0;
+}
+
+.ubicacion {
+    font-size: 12px;
+    color: #777;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.btn-comprar-local {
+    background: #2ecc71;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    margin-right: 8px;
+    transition: background 0.2s;
+}
+
+.btn-comprar-local:hover {
+    background: #27ae60;
+}
+
+.btn-detalle {
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: transparent;
+    color: #e44d26;
+    font-size: 12px;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 20px;
+    transition: all 0.2s;
+    border: 1px solid #e44d26;
+}
+
+.btn-detalle:hover {
+    background-color: #e44d26;
+    color: white;
+}
+
+/* ============================================ */
+/* CARRITO DE COMPRAS                           */
+/* ============================================ */
+.carrito-icono {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #e44d26;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 50px;
+    cursor: pointer;
+    z-index: 1000;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: transform 0.2s;
+}
+
+.carrito-icono:hover {
+    transform: scale(1.05);
+}
+
+.carrito-modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 80vh;
+    overflow-y: auto;
+    z-index: 1001;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+}
+
+.carrito-modal.activo {
+    display: block;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+}
+
+.overlay.activo {
+    display: block;
+}
+
+.carrito-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.total-carrito {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 2px solid #e44d26;
+    font-weight: bold;
+    text-align: right;
+    font-size: 18px;
+}
+
+.btn-eliminar {
+    background: #ff4444;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+.btn-vaciar {
+    background: #666;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+}
+
+/* ============================================ */
+/* PÁGINA DE DETALLE                            */
+/* ============================================ */
+.boton-volver {
+    display: inline-block;
+    margin: 16px auto;
+    padding: 8px 16px;
+    background: white;
+    color: #e44d26;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid #ddd;
+    transition: all 0.2s;
+}
+
+.boton-volver:hover {
+    background: #e44d26;
+    color: white;
+    border-color: #e44d26;
+}
+
+.detalle-producto {
+    max-width: 800px;
+    margin: 20px auto;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border: 1px solid #eee;
+}
+
+.detalle-imagen {
+    background: #fafafa;
+    text-align: center;
+    padding: 24px;
+    border-bottom: 1px solid #eee;
+}
+
+.detalle-imagen img {
+    max-width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.detalle-info {
+    padding: 24px;
+}
+
+.detalle-info h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #111;
+}
+
+.precio-detalle {
+    font-size: 32px;
+    font-weight: 800;
+    color: #e44d26;
+    margin-bottom: 20px;
+}
+
+.descripcion {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #444;
+    margin-bottom: 24px;
+}
+
+.caracteristicas {
+    list-style: none;
+    margin-bottom: 28px;
+    background: #f8f8f8;
+    padding: 16px;
+    border-radius: 12px;
+}
+
+.caracteristicas li {
+    padding: 8px 0;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 14px;
+    color: #333;
+}
+
+.caracteristicas li:last-child {
+    border-bottom: none;
+}
+
+.btn-comprar {
+    background: #e44d26;
+    color: white;
+    border: none;
+    padding: 14px 24px;
+    border-radius: 40px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.2s;
+}
+
+.btn-comprar:hover {
+    background: #c43c1a;
+}
+
+/* ============================================ */
+/* RESPONSIVE (MÓVIL)                           */
+/* ============================================ */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+    
+    .producto img {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .info h3 {
+        font-size: 15px;
+    }
+    
+    .precio {
+        font-size: 18px;
+    }
+    
+    .buscador input {
+        padding: 10px 15px;
+        font-size: 13px;
+    }
+    
+    .buscador button {
+        padding: 6px 18px;
+        font-size: 13px;
+    }
+    
+    .resultado-item img {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .detalle-info {
+        padding: 16px;
+    }
+    
+    .precio-detalle {
+        font-size: 26px;
+    }
+    
+    .carrito-icono {
+        top: 10px;
+        right: 10px;
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+}
+
+/* ============================================ */
+/* ESTILOS DE STOCK                             */
+/* ============================================ */
+
+.stock {
+    font-size: 12px;
+    margin: 4px 0;
+    padding: 2px 8px;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+.stock-disponible {
+    color: #2ecc71;
+    background: #e8f8f5;
+}
+
+.stock-bajo {
+    color: #f39c12;
+    background: #fef5e8;
+}
+
+.stock-agotado {
+    color: #e74c3c;
+    background: #fdedeb;
+}
+
+.stock-detalle {
+    font-size: 14px;
+    margin: 10px 0;
+    padding: 8px 12px;
+    border-radius: 8px;
+    display: inline-block;
+}
+
+.carrito-msg {
+    font-size: 13px;
+    margin: 8px 0;
+    padding: 6px 12px;
+    background: #e8f4fd;
+    color: #3498db;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+.btn-agotado {
+    background: #999;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 12px;
+    margin-right: 8px;
+    cursor: not-allowed;
+}
+
+.btn-comprar-local:disabled {
+    background: #999;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* Estilos para controles de cantidad en carrito */
+.carrito-cantidad {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.carrito-cantidad button {
+    background: #e0e0e0;
+    border: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 0.2s;
+}
+
+.carrito-cantidad button:hover:not(:disabled) {
+    background: #e44d26;
+    color: white;
+}
+
+.carrito-cantidad button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.carrito-cantidad span {
+    min-width: 24px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* ============================================ */
+/* BOTÓN DE WHATSAPP                            */
+/* ============================================ */
+
+.btn-whatsapp {
+    background: #25D366;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 40px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 15px;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn-whatsapp:hover {
+    background: #128C7E;
+    transform: scale(1.02);
+}
+
+.btn-whatsapp:active {
+    transform: scale(0.98);
+}
+
+/* ============================================ */
+/* MEJORAS ESTÉTICAS - VERSIÓN 2.0              */
+/* ============================================ */
+
+/* ========== 1. VARIABLES GLOBALES ========== */
+:root {
+    --color-primary: #db427d;
+    --color-primary-dark: #ff008c;
+    --color-secondary: #ff7b00;
+    --color-secondary-dark: #ff7c01;
+    --color-dark: #000000;
+    --color-gray: #666;
+    --color-light: #fcf7f7;
+    --color-white: #ffffff;
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.12);
+    --shadow-lg: 0 8px 24px rgba(0,0,0,0.15);
+    --shadow-hover: 0 12px 28px rgba(0,0,0,0.2);
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    --border-radius-sm: 8px;
+    --border-radius-md: 12px;
+    --border-radius-lg: 20px;
+    --border-radius-xl: 40px;
+}
+
+/* ========== 2. FONDO CON GRADIENTE SUTIL ========== */
+body {
+    background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 50%, rgba(228, 77, 38, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ========== 3. HEADER CON GRADIENTE ========== */
+header {
+    background: linear-gradient(135deg, var(--color-white) 0%, #fef9f7 100%);
+    border-radius: var(--border-radius-lg);
+    padding: 24px 20px 20px;
+    margin-bottom: 30px;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-secondary), var(--color-primary));
+    background-size: 200% 100%;
+    animation: gradientMove 3s ease infinite;
+}
+
+@keyframes gradientMove {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.logo h1 {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 32px;
+}
+
+.slogan {
+    background: linear-gradient(135deg, var(--color-gray) 0%, #888 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ========== 4. BUSCADOR MEJORADO ========== */
+.buscador {
+    background: var(--color-white);
+    border: none;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition-normal);
+}
+
+.buscador:focus-within {
+    box-shadow: 0 0 0 3px rgba(228, 77, 38, 0.2), var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.buscador input {
+    font-weight: 500;
+}
+
+.buscador input::placeholder {
+    color: #aaa;
+    font-weight: normal;
+}
+
+/* ========== 5. FILTROS MEJORADOS ========== */
+.filtro-btn {
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition-fast);
+    font-weight: 500;
+}
+
+.filtro-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.filtro-btn:hover::before {
+    width: 100%;
+    height: 100%;
+}
+
+.filtro-btn.activo {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    box-shadow: var(--shadow-sm);
+}
+
+/* ========== 6. TARJETAS DE PRODUCTO MEJORADAS ========== */
+.producto {
+    background: var(--color-white);
+    border: none;
+    transition: var(--transition-normal);
+    animation: fadeInUp 0.5s ease backwards;
+    animation-delay: calc(var(--delay, 0) * 0.05s);
+}
+
+.producto:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+}
+
+.producto img {
+    transition: var(--transition-normal);
+}
+
+.producto:hover img {
+    transform: scale(1.05);
+}
+
+/* Animación de entrada */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Asignar delays a cada producto */
+.producto:nth-child(1) { --delay: 1; }
+.producto:nth-child(2) { --delay: 2; }
+.producto:nth-child(3) { --delay: 3; }
+.producto:nth-child(4) { --delay: 4; }
+.producto:nth-child(5) { --delay: 5; }
+.producto:nth-child(6) { --delay: 6; }
+
+/* ========== 7. BOTONES MEJORADOS ========== */
+.btn-comprar-local {
+    background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-secondary-dark) 100%);
+    transition: var(--transition-fast);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-comprar-local::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s;
+}
+
+.btn-comprar-local:hover::before {
+    left: 100%;
+}
+
+.btn-detalle {
+    transition: var(--transition-fast);
+    position: relative;
+}
+
+.btn-detalle:hover {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    border-color: transparent;
+    transform: translateX(5px);
+}
+
+/* ========== 8. CARRITO MEJORADO ========== */
+.carrito-icono {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    animation: pulse 2s infinite;
+    box-shadow: var(--shadow-md);
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(228, 77, 38, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 0 10px rgba(228, 77, 38, 0);
+    }
+}
+
+.carrito-modal {
+    animation: slideInModal 0.3s ease;
+    border: none;
+    box-shadow: var(--shadow-lg);
+}
+
+@keyframes slideInModal {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -40%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.carrito-item {
+    transition: var(--transition-fast);
+    animation: fadeInItem 0.3s ease;
+}
+
+@keyframes fadeInItem {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.carrito-item:hover {
+    background: rgba(228, 77, 38, 0.05);
+    transform: translateX(5px);
+}
+
+/* ========== 9. BOTÓN WHATSAPP MEJORADO ========== */
+.btn-whatsapp {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    animation: subtlePulse 2s infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-whatsapp::before {
+    content: '💬';
+    margin-right: 8px;
+    animation: bounce 1s infinite;
+}
+
+@keyframes subtlePulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 0 5px rgba(37, 211, 102, 0);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
+}
+
+/* ========== 10. BADGES DE OFERTA Y NUEVO ========== */
+.producto {
+    position: relative;
+}
+
+.badge-oferta {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: linear-gradient(135deg, #ff6b6b, #ff4757);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+    z-index: 10;
+    animation: pulseBadge 1.5s infinite;
+    box-shadow: var(--shadow-sm);
+}
+
+.badge-nuevo {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: linear-gradient(135deg, var(--color-secondary), var(--color-secondary-dark));
+    color: white;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+    z-index: 10;
+    animation: pulseBadge 1.5s infinite;
+}
+
+@keyframes pulseBadge {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* ========== 11. SCROLLBAR PERSONALIZADA ========== */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-light);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary-dark);
+}
+
+/* ========== 12. PÁGINA DE DETALLE MEJORADA ========== */
+.detalle-producto {
+    animation: fadeInUp 0.5s ease;
+    border: none;
+    box-shadow: var(--shadow-lg);
+}
+
+.detalle-imagen {
+    background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+}
+
+.detalle-imagen img {
+    transition: var(--transition-normal);
+}
+
+.detalle-imagen img:hover {
+    transform: scale(1.02);
+}
+
+.btn-comprar {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-comprar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s;
+}
+
+.btn-comprar:hover::before {
+    left: 100%;
+}
+
+/* ========== 13. LOADING SKELETON (opcional) ========== */
+.skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+    border-radius: var(--border-radius-md);
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* ========== 14. RESPONSIVE MEJORADO ========== */
+@media (max-width: 600px) {
+    header {
+        padding: 16px 12px;
+        margin-bottom: 20px;
+    }
+    
+    .logo h1 {
+        font-size: 24px;
+    }
+    
+    .producto {
+        padding: 8px;
+        gap: 12px;
+    }
+    
+    .producto img {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .info h3 {
+        font-size: 14px;
+    }
+    
+    .precio {
+        font-size: 16px;
+    }
+    
+    .btn-comprar-local, .btn-detalle {
+        padding: 4px 10px;
+        font-size: 11px;
+    }
+    
+    .carrito-icono {
+        top: 10px;
+        right: 10px;
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+    
+    .filtro-btn {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+}
+
+/* ========== 15. EFECTO GLASS MORPHISM (opcional) ========== */
+.glass-effect {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* ========== 16. ANIMACIÓN DE CARGA DE PRODUCTOS ========== */
+.contenedor {
+    animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* ============================================ */
+/* LOGO CON IMAGEN A LA IZQUIERDA               */
+/* ============================================ */
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.logo-imagen {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-normal);
+}
+
+.logo:hover .logo-imagen {
+    transform: scale(1.05) rotate(5deg);
+    box-shadow: var(--shadow-md);
+}
+
+.logo h1 {
+    margin: 0;
+    font-size: 32px;
+}
+
+/* Versión cuadrada (alternativa) */
+.logo-imagen-cuadrada {
+    border-radius: var(--border-radius-md);
+}
+
+/* Versión grande (alternativa) */
+.logo-imagen-grande {
+    width: 60px;
+    height: 60px;
+}
+
+/* Versión pequeña (alternativa) */
+.logo-imagen-pequena {
+    width: 40px;
+    height: 40px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .logo-imagen {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .logo h1 {
+        font-size: 24px;
+    }
+    
+    .logo {
+        gap: 10px;
+    }
+}
+
+.logo-imagen {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-normal);
+    position: relative;
+}
+
+.logo-imagen::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: left 0.5s;
+}
+
+.logo:hover .logo-imagen::after {
+    left: 100%;
+}
+
+/* ============================================ */
+/* BARRA DE REDES SOCIALES (ENCIMA DEL HEADER)  */
+/* ============================================ */
+
+.top-social-bar {
+    width: 100%;
+    background: linear-gradient(135deg, #db427d 0%, #c673d1 100%);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    border-radius: 5%;
+    padding: 8px 0;
+    position: relative;
+    z-index: 100;
+}
+
+.top-social-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+}
+
+.social-text {
+    color: rgba(255,255,255,0.7);
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.top-social-links {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.top-social-icon {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 13px;
+    transition: all 0.3s ease;
+    padding: 4px 8px;
+    border-radius: 20px;
+}
+
+.top-social-icon svg {
+    width: 16px;
+    height: 16px;
+}
+
+.top-social-icon span {
+    font-size: 12px;
+}
+
+.top-social-icon:hover {
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Colores específicos al hacer hover */
+.top-social-icon.facebook:hover {
+    background: #1877f2;
+}
+
+.top-social-icon.instagram:hover {
+    background: radial-gradient(circle at 30% 110%, #ffdb7e, #f9ce34, #e94057, #b83b92, #6a2c8f);
+}
+
+.top-social-icon.whatsapp:hover {
+    background: #25D366;
+}
+
+.top-social-icon.tiktok:hover {
+    background: #000000;
+}
+
+.top-social-icon.twitter:hover {
+    background: #000000;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+    .top-social-container {
+        justify-content: center;
+        gap: 10px;
+    }
+    
+    .social-text {
+        display: none;
+    }
+    
+    .top-social-icon span {
+        display: none;
+    }
+    
+    .top-social-icon {
+        padding: 6px;
+        border-radius: 50%;
+    }
+    
+    .top-social-icon svg {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .top-social-links {
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .top-social-bar {
+        padding: 6px 0;
+    }
+    
+    .top-social-links {
+        gap: 8px;
+    }
+}
+
+.top-social-container {
+    justify-content: center;  /* Cambia de 'flex-end' a 'center' */
+}
+
+/* ========== BOTÓN VOLVER ARRIBA ========== */
+.scroll-top-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, #e44d26, #c43c1a);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 99;
+    transition: all 0.3s;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.scroll-top-btn:hover {
+    transform: scale(1.1);
+}
+
+@media (max-width: 600px) {
+    .scroll-top-btn {
+        bottom: 15px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* ========== SKELETON LOADING ========== */
+.skeleton-product {
+    background: white;
+    border-radius: 12px;
+    padding: 12px;
+    display: flex;
+    gap: 16px;
+    animation: pulse 1.5s infinite;
+}
+
+.skeleton-img {
+    width: 100px;
+    height: 100px;
+    background: #e0e0e0;
+    border-radius: 8px;
+}
+
+.skeleton-text {
+    flex: 1;
+}
+
+.skeleton-text div {
+    height: 15px;
+    background: #e0e0e0;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.skeleton-text div:last-child {
+    width: 60%;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* ========== FOOTER ========== */
+.footer {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: white;
+    margin-top: 50px;
+    padding: 40px 20px 0;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    padding-bottom: 30px;
+}
+
+.footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #e44d26;
+}
+
+.footer-section p, .footer-section ul {
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.7);
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: #e44d26;
+}
+
+.footer-social {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.footer-social-icon {
+    width: 35px;
+    height: 35px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s;
+}
+
+.footer-social-icon:hover {
+    background: #e44d26;
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .footer-social {
+        justify-content: center;
+    }
+}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" 
+          content="default-src 'self'; 
+                   script-src 'self' 'unsafe-inline'; 
+                   style-src 'self' 'unsafe-inline'; 
+                   img-src 'self' data: https://picsum.photos;">
+    <!-- Prevenir que el navegador adivine tipos de archivo -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    
+    <!-- Evitar que la página se muestre en iframes (clickjacking) -->
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    
+    <!-- Controlar la información de referencia -->
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>D`talles Roxy</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <!-- ========== BOTÓN VOLVER ========== -->
+    <div style="max-width: 800px; margin: 0 auto; padding: 0 10px;">
+        <a href="index.html" class="boton-volver">← Volver al mercado</a>
+    </div>
+
+    <!-- ========== DETALLE DEL PRODUCTO ========== -->
+    <div id="detalle" class="detalle-producto">
+        <div class="detalle-imagen">
+            <img id="producto-imagen" src="" alt="Producto">
+        </div>
+        <div class="detalle-info">
+            <h2 id="producto-nombre"></h2>
+            <p class="precio-detalle" id="producto-precio"></p>
+            <p class="descripcion" id="producto-descripcion"></p>
+            <ul class="caracteristicas" id="producto-caracteristicas"></ul>
+            <button class="btn-comprar" id="btn-agregar-carrito">
+                Agregar al carrito 🛒
+            </button>
+        </div>
+    </div>
+
+    <!-- ========== SCRIPTS ========== -->
+    <script src="js/carrito.js"></script>
+    <script src="js/productos.js"></script>
+    <script src="js/detalle.js"></script>
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+    <div class="footer-container">
+        <div class="footer-section">
+            <h3>TuMercado</h3>
+            <p>Tu tienda online de confianza. Los mejores productos al mejor precio.</p>
+            <div class="footer-social">
+                <a href="#" class="footer-social-icon">📘</a>
+                <a href="#" class="footer-social-icon">📷</a>
+                <a href="#" class="footer-social-icon">💬</a>
+            </div>
+        </div>
+        
+        <div class="footer-section">
+            <h3>Enlaces rápidos</h3>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="#">Productos</a></li>
+                <li><a href="#">Ofertas</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-section">
+            <h3>Ayuda</h3>
+            <ul>
+                <li><a href="#">Cómo comprar</a></li>
+                <li><a href="#">Envíos</a></li>
+                <li><a href="#">Devoluciones</a></li>
+                <li><a href="#">Preguntas frecuentes</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-section">
+            <h3>Contacto</h3>
+            <p>📧 info: dtallessroxy@gmail.com</p>
+            <p>📞 +53 58474815</p>
+            <p>📍 La Habana, Cuba</p>
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <p>&copy; 2024 TuMercado. Todos los derechos reservados.</p>
+    </div>
+    </footer>
+</body>
+</html>
