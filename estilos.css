@@ -1269,7 +1269,6 @@ header::before {
     border-radius: 50%;
 }
 
-/* Si la imagen no carga, muestra un fondo de respaldo */
 .logo-imagen {
     background-color: #e44d26;
     background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="80" fill="white">🛒</text></svg>');
