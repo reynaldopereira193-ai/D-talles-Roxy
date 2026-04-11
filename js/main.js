@@ -67,6 +67,17 @@ function renderizarProductos() {
         `;
     }).join('');
 }
+        // Scroll automático
+    const urlParams = new URLSearchParams(window.location.search);
+    const scrollId = urlParams.get('scroll');
+    if (scrollId) {
+        setTimeout(() => {
+            const elemento = document.querySelector(`.producto-card[data-id="${scrollId}"]`);
+            if (elemento) elemento.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 200);
+    }
+
+
 
 // Función para agregar al carrito desde la lista
 function agregarAlCarritoDesdeLista(id) {
@@ -226,14 +237,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }, observerOptions);
 
     // Aplicar a los productos después de renderizar
-    function aplicarAnimacionScroll() {
+function aplicarAnimacionScroll() {
         document.querySelectorAll('.producto').forEach(producto => {
             producto.style.opacity = '0';
             producto.style.transform = 'translateY(30px)';
             producto.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
             observer.observe(producto);
         });
-    }
+}
 
     // Llamar después de renderizar productos
     const originalRenderizar = renderizarProductos;

@@ -7,38 +7,120 @@
     box-sizing: border-box;
 }
 
+
+
+
+
+/* ============================================ */
+/* CONTENEDOR DE PRODUCTOS (Una columna)        */
+/* ============================================ */
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 800px;
+    margin: 0 auto;
+    animation: fadeIn 0.8s ease;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+
+
+/* ============================================ */
+/* MEJORAS ESTÉTICAS - VERSIÓN 2.0              */
+/* ============================================ */
+
+/* ========== 1. VARIABLES GLOBALES ========== */
+:root {
+    --color-primary: #db427d;
+    --color-primary-dark: #ff008c;
+    --color-secondary: #ff7b00;
+    --color-secondary-dark: #ff7c01;
+    --color-dark: #000000;
+    --color-gray: #666;
+    --color-light: #fcf7f7;
+    --color-white: #ffffff;
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.12);
+    --shadow-lg: 0 8px 24px rgba(0,0,0,0.15);
+    --shadow-hover: 0 12px 28px rgba(0,0,0,0.2);
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    --border-radius-sm: 8px;
+    --border-radius-md: 12px;
+    --border-radius-lg: 20px;
+    --border-radius-xl: 40px;
+}
+
+/* ========== 2. FONDO CON GRADIENTE SUTIL ========== */
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     background-color: #f2f2f2;
     color: #1a1a1a;
     line-height: 1.4;
     padding: 16px;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+    position: relative;
 }
 
-/* ============================================ */
-/* HEADER Y LOGO                                */
-/* ============================================ */
-header {
-    max-width: 800px;
-    margin: 0 auto 24px auto;
-    text-align: center;
-    border-bottom: 1px solid #e0e0e0;
-    padding-bottom: 16px;
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 50%, rgba(228, 77, 38, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ========== 3. HEADER CON GRADIENTE ========== */
+.header-modeno {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.header-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+@keyframes gradientMove {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
 }
 
 .logo h1 {
-    font-size: 28px;
-    font-weight: 700;
-    color: #e44d26;
-    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 32px;
 }
 
 .slogan {
-    font-size: 14px;
-    color: #666;
-    margin-top: 4px;
+    background: linear-gradient(135deg, var(--color-gray) 0%, #888 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
+/* ========== 4. BUSCADOR MEJORADO ========== */
 /* ============================================ */
 /* BUSCADOR                                     */
 /* ============================================ */
@@ -163,6 +245,28 @@ header {
     font-size: 14px;
 }
 
+.buscador {
+    background: var(--color-white);
+    border: none;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition-normal);
+}
+
+.buscador:focus-within {
+    box-shadow: 0 0 0 3px rgba(228, 77, 38, 0.2), var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.buscador input {
+    font-weight: 500;
+}
+
+.buscador input::placeholder {
+    color: #aaa;
+    font-weight: normal;
+}
+
+/* ========== 5. FILTROS MEJORADOS ========== */
 /* ============================================ */
 /* FILTROS                                      */
 /* ============================================ */
@@ -191,17 +295,38 @@ header {
     color: white;
 }
 
-/* ============================================ */
-/* CONTENEDOR DE PRODUCTOS (Una columna)        */
-/* ============================================ */
-.contenedor {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    max-width: 800px;
-    margin: 0 auto;
+
+.filtro-btn {
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition-fast);
+    font-weight: 500;
 }
 
+.filtro-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.filtro-btn:hover::before {
+    width: 100%;
+    height: 100%;
+}
+
+.filtro-btn.activo {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    box-shadow: var(--shadow-sm);
+}
+
+/* ========== 6. TARJETAS DE PRODUCTO MEJORADAS ========== */
 /* ============================================ */
 /* TARJETA DE PRODUCTO                          */
 /* ============================================ */
@@ -296,6 +421,83 @@ header {
     color: white;
 }
 
+
+.producto {
+    background: var(--color-white);
+    border: none;
+    transition: var(--transition-normal);
+    animation: fadeInUp 0.5s ease backwards;
+    animation-delay: calc(var(--delay, 0) * 0.05s);
+}
+
+.producto:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+}
+
+.producto img {
+    transition: var(--transition-normal);
+}
+
+.producto:hover img {
+    transform: scale(1.05);
+}
+
+/* Animación de entrada */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Asignar delays a cada producto */
+.producto:nth-child(1) { --delay: 1; }
+.producto:nth-child(2) { --delay: 2; }
+.producto:nth-child(3) { --delay: 3; }
+.producto:nth-child(4) { --delay: 4; }
+.producto:nth-child(5) { --delay: 5; }
+.producto:nth-child(6) { --delay: 6; }
+
+/* ========== 7. BOTONES MEJORADOS ========== */
+.btn-comprar-local {
+    background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-secondary-dark) 100%);
+    transition: var(--transition-fast);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-comprar-local::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s;
+}
+
+.btn-comprar-local:hover::before {
+    left: 100%;
+}
+
+.btn-detalle {
+    transition: var(--transition-fast);
+    position: relative;
+}
+
+.btn-detalle:hover {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    border-color: transparent;
+    transform: translateX(5px);
+}
+
+/* ========== 8. CARRITO MEJORADO ========== */
 /* ============================================ */
 /* CARRITO DE COMPRAS                           */
 /* ============================================ */
@@ -393,6 +595,188 @@ header {
     width: 100%;
 }
 
+
+.carrito-icono {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    animation: pulse 2s infinite;
+    box-shadow: var(--shadow-md);
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(228, 77, 38, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 0 10px rgba(228, 77, 38, 0);
+    }
+}
+
+.carrito-modal {
+    animation: slideInModal 0.3s ease;
+    border: none;
+    box-shadow: var(--shadow-lg);
+}
+
+@keyframes slideInModal {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -40%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.carrito-item {
+    transition: var(--transition-fast);
+    animation: fadeInItem 0.3s ease;
+}
+
+@keyframes fadeInItem {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.carrito-item:hover {
+    background: rgba(228, 77, 38, 0.05);
+    transform: translateX(5px);
+}
+
+/* ========== 9. BOTÓN WHATSAPP MEJORADO ========== */
+/* ============================================ */
+/* BOTÓN DE WHATSAPP                            */
+/* ============================================ */
+
+.btn-whatsapp {
+    background: #25D366;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 40px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 15px;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn-whatsapp:hover {
+    background: #128C7E;
+    transform: scale(1.02);
+}
+
+.btn-whatsapp:active {
+    transform: scale(0.98);
+}
+
+
+.btn-whatsapp {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    animation: subtlePulse 2s infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-whatsapp::before {
+    content: '💬';
+    margin-right: 8px;
+    animation: bounce 1s infinite;
+}
+
+@keyframes subtlePulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 0 5px rgba(37, 211, 102, 0);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
+}
+
+/* ========== 10. BADGES DE OFERTA Y NUEVO ========== */
+.producto {
+    position: relative;
+}
+
+.badge-oferta {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: linear-gradient(135deg, #ff6b6b, #ff4757);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+    z-index: 10;
+    animation: pulseBadge 1.5s infinite;
+    box-shadow: var(--shadow-sm);
+}
+
+.badge-nuevo {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: linear-gradient(135deg, var(--color-secondary), var(--color-secondary-dark));
+    color: white;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+    z-index: 10;
+    animation: pulseBadge 1.5s infinite;
+}
+
+@keyframes pulseBadge {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* ========== 11. SCROLLBAR PERSONALIZADA ========== */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-light);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary-dark);
+}
+
+/* ========== 12. PÁGINA DE DETALLE MEJORADA ========== */
 /* ============================================ */
 /* PÁGINA DE DETALLE                            */
 /* ============================================ */
@@ -501,55 +885,60 @@ header {
     background: #c43c1a;
 }
 
-/* ============================================ */
-/* RESPONSIVE (MÓVIL)                           */
-/* ============================================ */
-@media (max-width: 600px) {
-    body {
-        padding: 10px;
+
+.detalle-producto {
+    animation: fadeInUp 0.5s ease;
+    border: none;
+    box-shadow: var(--shadow-lg);
+}
+
+.detalle-imagen {
+    background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+}
+
+.detalle-imagen img {
+    transition: var(--transition-normal);
+}
+
+.detalle-imagen img:hover {
+    transform: scale(1.02);
+}
+
+.btn-comprar {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-comprar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s;
+}
+
+.btn-comprar:hover::before {
+    left: 100%;
+}
+
+/* ========== 13. LOADING SKELETON (opcional) ========== */
+.skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+    border-radius: var(--border-radius-md);
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
     }
-    
-    .producto img {
-        width: 80px;
-        height: 80px;
-    }
-    
-    .info h3 {
-        font-size: 15px;
-    }
-    
-    .precio {
-        font-size: 18px;
-    }
-    
-    .buscador input {
-        padding: 10px 15px;
-        font-size: 13px;
-    }
-    
-    .buscador button {
-        padding: 6px 18px;
-        font-size: 13px;
-    }
-    
-    .resultado-item img {
-        width: 40px;
-        height: 40px;
-    }
-    
-    .detalle-info {
-        padding: 16px;
-    }
-    
-    .precio-detalle {
-        font-size: 26px;
-    }
-    
-    .carrito-icono {
-        top: 10px;
-        right: 10px;
-        padding: 8px 12px;
-        font-size: 12px;
+    100% {
+        background-position: -200% 0;
     }
 }
 
@@ -651,463 +1040,65 @@ header {
     font-weight: bold;
 }
 
-/* ============================================ */
-/* BOTÓN DE WHATSAPP                            */
-/* ============================================ */
 
-.btn-whatsapp {
-    background: #25D366;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 40px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    width: 100%;
-    margin-top: 15px;
-    transition: all 0.3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
 
-.btn-whatsapp:hover {
-    background: #128C7E;
-    transform: scale(1.02);
-}
-
-.btn-whatsapp:active {
-    transform: scale(0.98);
-}
-
-/* ============================================ */
-/* MEJORAS ESTÉTICAS - VERSIÓN 2.0              */
-/* ============================================ */
-
-/* ========== 1. VARIABLES GLOBALES ========== */
-:root {
-    --color-primary: #db427d;
-    --color-primary-dark: #ff008c;
-    --color-secondary: #ff7b00;
-    --color-secondary-dark: #ff7c01;
-    --color-dark: #000000;
-    --color-gray: #666;
-    --color-light: #fcf7f7;
-    --color-white: #ffffff;
-    --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
-    --shadow-md: 0 4px 12px rgba(0,0,0,0.12);
-    --shadow-lg: 0 8px 24px rgba(0,0,0,0.15);
-    --shadow-hover: 0 12px 28px rgba(0,0,0,0.2);
-    --transition-fast: 0.2s ease;
-    --transition-normal: 0.3s ease;
-    --transition-slow: 0.5s ease;
-    --border-radius-sm: 8px;
-    --border-radius-md: 12px;
-    --border-radius-lg: 20px;
-    --border-radius-xl: 40px;
-}
-
-/* ========== 2. FONDO CON GRADIENTE SUTIL ========== */
-body {
-    background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
-    position: relative;
-}
-
-body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at 20% 50%, rgba(228, 77, 38, 0.03) 0%, transparent 50%);
-    pointer-events: none;
-    z-index: 0;
-}
-
-/* ========== 3. HEADER CON GRADIENTE ========== */
-header {
-    background: linear-gradient(135deg, var(--color-white) 0%, #fef9f7 100%);
-    border-radius: var(--border-radius-lg);
-    padding: 24px 20px 20px;
-    margin-bottom: 30px;
-    box-shadow: var(--shadow-sm);
-    position: relative;
-    overflow: hidden;
-}
-
-header::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--color-primary), var(--color-secondary), var(--color-primary));
-    background-size: 200% 100%;
-    animation: gradientMove 3s ease infinite;
-}
-
-@keyframes gradientMove {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-}
-
-.logo h1 {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-size: 32px;
-}
-
-.slogan {
-    background: linear-gradient(135deg, var(--color-gray) 0%, #888 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-/* ========== 4. BUSCADOR MEJORADO ========== */
-.buscador {
-    background: var(--color-white);
-    border: none;
-    box-shadow: var(--shadow-md);
-    transition: var(--transition-normal);
-}
-
-.buscador:focus-within {
-    box-shadow: 0 0 0 3px rgba(228, 77, 38, 0.2), var(--shadow-md);
-    transform: translateY(-2px);
-}
-
-.buscador input {
-    font-weight: 500;
-}
-
-.buscador input::placeholder {
-    color: #aaa;
-    font-weight: normal;
-}
-
-/* ========== 5. FILTROS MEJORADOS ========== */
-.filtro-btn {
-    position: relative;
-    overflow: hidden;
-    transition: var(--transition-fast);
-    font-weight: 500;
-}
-
-.filtro-btn::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s, height 0.6s;
-}
-
-.filtro-btn:hover::before {
-    width: 100%;
-    height: 100%;
-}
-
-.filtro-btn.activo {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-    box-shadow: var(--shadow-sm);
-}
-
-/* ========== 6. TARJETAS DE PRODUCTO MEJORADAS ========== */
-.producto {
-    background: var(--color-white);
-    border: none;
-    transition: var(--transition-normal);
-    animation: fadeInUp 0.5s ease backwards;
-    animation-delay: calc(var(--delay, 0) * 0.05s);
-}
-
-.producto:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-lg);
-}
-
-.producto img {
-    transition: var(--transition-normal);
-}
-
-.producto:hover img {
-    transform: scale(1.05);
-}
-
-/* Animación de entrada */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Asignar delays a cada producto */
-.producto:nth-child(1) { --delay: 1; }
-.producto:nth-child(2) { --delay: 2; }
-.producto:nth-child(3) { --delay: 3; }
-.producto:nth-child(4) { --delay: 4; }
-.producto:nth-child(5) { --delay: 5; }
-.producto:nth-child(6) { --delay: 6; }
-
-/* ========== 7. BOTONES MEJORADOS ========== */
-.btn-comprar-local {
-    background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-secondary-dark) 100%);
-    transition: var(--transition-fast);
-    position: relative;
-    overflow: hidden;
-}
-
-.btn-comprar-local::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-    transition: left 0.5s;
-}
-
-.btn-comprar-local:hover::before {
-    left: 100%;
-}
-
-.btn-detalle {
-    transition: var(--transition-fast);
-    position: relative;
-}
-
-.btn-detalle:hover {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-    border-color: transparent;
-    transform: translateX(5px);
-}
-
-/* ========== 8. CARRITO MEJORADO ========== */
-.carrito-icono {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-    animation: pulse 2s infinite;
-    box-shadow: var(--shadow-md);
-}
-
-@keyframes pulse {
-    0%, 100% {
-        box-shadow: 0 0 0 0 rgba(228, 77, 38, 0.4);
-    }
-    50% {
-        box-shadow: 0 0 0 10px rgba(228, 77, 38, 0);
-    }
-}
-
-.carrito-modal {
-    animation: slideInModal 0.3s ease;
-    border: none;
-    box-shadow: var(--shadow-lg);
-}
-
-@keyframes slideInModal {
-    from {
-        opacity: 0;
-        transform: translate(-50%, -40%);
-    }
-    to {
-        opacity: 1;
-        transform: translate(-50%, -50%);
-    }
-}
-
-.carrito-item {
-    transition: var(--transition-fast);
-    animation: fadeInItem 0.3s ease;
-}
-
-@keyframes fadeInItem {
-    from {
-        opacity: 0;
-        transform: translateX(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-.carrito-item:hover {
-    background: rgba(228, 77, 38, 0.05);
-    transform: translateX(5px);
-}
-
-/* ========== 9. BOTÓN WHATSAPP MEJORADO ========== */
-.btn-whatsapp {
-    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-    animation: subtlePulse 2s infinite;
-    position: relative;
-    overflow: hidden;
-}
-
-.btn-whatsapp::before {
-    content: '💬';
-    margin-right: 8px;
-    animation: bounce 1s infinite;
-}
-
-@keyframes subtlePulse {
-    0%, 100% {
-        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4);
-    }
-    50% {
-        box-shadow: 0 0 0 5px rgba(37, 211, 102, 0);
-    }
-}
-
-@keyframes bounce {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-3px);
-    }
-}
-
-/* ========== 10. BADGES DE OFERTA Y NUEVO ========== */
-.producto {
-    position: relative;
-}
-
-.badge-oferta {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    background: linear-gradient(135deg, #ff6b6b, #ff4757);
-    color: white;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-size: 11px;
-    font-weight: bold;
-    z-index: 10;
-    animation: pulseBadge 1.5s infinite;
-    box-shadow: var(--shadow-sm);
-}
-
-.badge-nuevo {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    background: linear-gradient(135deg, var(--color-secondary), var(--color-secondary-dark));
-    color: white;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-size: 11px;
-    font-weight: bold;
-    z-index: 10;
-    animation: pulseBadge 1.5s infinite;
-}
-
-@keyframes pulseBadge {
-    0%, 100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.05);
-    }
-}
-
-/* ========== 11. SCROLLBAR PERSONALIZADA ========== */
-::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: var(--color-light);
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: var(--color-primary-dark);
-}
-
-/* ========== 12. PÁGINA DE DETALLE MEJORADA ========== */
-.detalle-producto {
-    animation: fadeInUp 0.5s ease;
-    border: none;
-    box-shadow: var(--shadow-lg);
-}
-
-.detalle-imagen {
-    background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
-}
-
-.detalle-imagen img {
-    transition: var(--transition-normal);
-}
-
-.detalle-imagen img:hover {
-    transform: scale(1.02);
-}
-
-.btn-comprar {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-    position: relative;
-    overflow: hidden;
-}
-
-.btn-comprar::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-    transition: left 0.5s;
-}
-
-.btn-comprar:hover::before {
-    left: 100%;
-}
-
-/* ========== 13. LOADING SKELETON (opcional) ========== */
-.skeleton {
-    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-    background-size: 200% 100%;
-    animation: loading 1.5s infinite;
-    border-radius: var(--border-radius-md);
-}
-
-@keyframes loading {
-    0% {
-        background-position: 200% 0;
-    }
-    100% {
-        background-position: -200% 0;
-    }
-}
 
 /* ========== 14. RESPONSIVE MEJORADO ========== */
+/* ============================================ */
+/* RESPONSIVE (MÓVIL)                           */
+/* ============================================ */
 @media (max-width: 600px) {
-    header {
+    body {
+        padding: 10px;
+    }
+    
+    .producto img {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .info h3 {
+        font-size: 15px;
+    }
+    
+    .precio {
+        font-size: 18px;
+    }
+    
+    .buscador input {
+        padding: 10px 15px;
+        font-size: 13px;
+    }
+    
+    .buscador button {
+        padding: 6px 18px;
+        font-size: 13px;
+    }
+    
+    .resultado-item img {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .detalle-info {
+        padding: 16px;
+    }
+    
+    .precio-detalle {
+        font-size: 26px;
+    }
+    
+    .carrito-icono {
+        top: 10px;
+        right: 10px;
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+}
+
+
+@media (max-width: 600px) {
+    .header-container {
         padding: 16px 12px;
         margin-bottom: 20px;
     }
@@ -1204,22 +1195,9 @@ header::before {
     font-size: 32px;
 }
 
-/* Versión cuadrada (alternativa) */
-.logo-imagen-cuadrada {
-    border-radius: var(--border-radius-md);
-}
 
-/* Versión grande (alternativa) */
-.logo-imagen-grande {
-    width: 60px;
-    height: 60px;
-}
 
-/* Versión pequeña (alternativa) */
-.logo-imagen-pequena {
-    width: 40px;
-    height: 40px;
-}
+
 
 /* Responsive */
 @media (max-width: 600px) {

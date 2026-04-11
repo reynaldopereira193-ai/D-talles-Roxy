@@ -94,32 +94,34 @@
     </div>
     
     <!-- ========== HEADER ========== -->
-    <header>
-        <div class="logo">
-            <img src="imagenes/logotipo2.png" alt="" class="logo-imagen">
-            <div>
-                <h1>D`talles Roxy</h1>
-                <p class="slogan">Tienda Oficial</p>
+    <div class="header-moderno">
+        <div class="header-container">
+            <div class="logo">
+                <img src="imagenes/logotipo2.png" alt="" class="logo-imagen">
+                <div>
+                    <h1>D`talles Roxy</h1>
+                    <p class="slogan">Tienda Oficial</p>
+                </div>
+            </div>
+        
+            <!-- BUSCADOR -->
+            <div class="buscador-container">
+                <form id="buscador-form" class="buscador">
+                    <input type="text" id="buscar-input" placeholder="Buscar productos... 🔍" autocomplete="off">
+                    <button type="submit">Buscar</button>
+                </form>
+                <div id="resultados-busqueda" class="resultados-busqueda"></div>
+            </div>
+        
+            <!-- FILTROS POR CATEGORÍA -->
+            <div class="filtros">
+                <button class="filtro-btn activo" data-categoria="todos">Todos</button>
+                <button class="filtro-btn" data-categoria="Oficina">Oficina</button>
+                <button class="filtro-btn" data-categoria="Escuela">Escuela</button>
+                <button class="filtro-btn" data-categoria="Regalos">Regalos</button>
             </div>
         </div>
-        
-        <!-- BUSCADOR -->
-        <div class="buscador-container">
-            <form id="buscador-form" class="buscador">
-                <input type="text" id="buscar-input" placeholder="Buscar productos... 🔍" autocomplete="off">
-                <button type="submit">Buscar</button>
-            </form>
-            <div id="resultados-busqueda" class="resultados-busqueda"></div>
-        </div>
-        
-        <!-- FILTROS POR CATEGORÍA -->
-        <div class="filtros">
-            <button class="filtro-btn activo" data-categoria="todos">Todos</button>
-            <button class="filtro-btn" data-categoria="Oficina">Oficina</button>
-            <button class="filtro-btn" data-categoria="Escuela">Escuela</button>
-            <button class="filtro-btn" data-categoria="Regalos">Regalos</button>
-        </div>
-    </header>
+    </div>
 
     <!-- ========== CONTENEDOR DE PRODUCTOS ========== -->
     <main class="contenedor" id="productos-container"></main>
