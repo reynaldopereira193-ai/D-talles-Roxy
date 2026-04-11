@@ -15,12 +15,9 @@
 /* CONTENEDOR DE PRODUCTOS (Una columna)        */
 /* ============================================ */
 .contenedor {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
-    animation: fadeIn 0.8s ease;
+    padding: 40px 24px;
 }
 @keyframes fadeIn {
     from { opacity: 0; }
@@ -331,21 +328,19 @@ body::before {
 /* TARJETA DE PRODUCTO                          */
 /* ============================================ */
 .producto {
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 12px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-    transition: all 0.2s ease;
-    border: 1px solid #eaeaea;
+    background: #111111;
+    border-radius: 28px;
+    margin-bottom: 48px;
+    padding: 32px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    transition: all 0.3s;
+    border: 1px solid rgba(50, 205, 50, 0.15);
 }
 
 .producto:hover {
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    transform: translateY(-2px);
+    transform: translateY(-4px);
+    border-color: rgba(50, 205, 50, 0.4);
+    box-shadow: 0 16px 40px rgba(50, 205, 50, 0.1);
 }
 
 .producto img {
@@ -373,34 +368,37 @@ body::before {
 }
 
 .precio {
-    font-size: 20px;
-    font-weight: 700;
-    color: #e44d26;
-    margin: 4px 0;
+    font-size: 34px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #32CD32, #00CED1);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 12px 0;
 }
 
 .ubicacion {
-    font-size: 12px;
-    color: #777;
-    display: flex;
-    align-items: center;
-    gap: 4px;
+    font-size: 14px;
+    color: #888;
+    margin: 6px 0;
 }
 
 .btn-comprar-local {
-    background: #2ecc71;
-    color: white;
+    background: linear-gradient(135deg, #32CD32, #00CED1);
+    color: #0a0a0a;
     border: none;
-    padding: 6px 12px;
-    border-radius: 5px;
+    padding: 12px 32px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: bold;
     cursor: pointer;
-    font-size: 12px;
-    margin-right: 8px;
-    transition: background 0.2s;
+    transition: all 0.2s;
+    margin-top: 8px;
 }
 
 .btn-comprar-local:hover {
-    background: #27ae60;
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(50, 205, 50, 0.3);
 }
 
 .btn-detalle {
@@ -1047,7 +1045,7 @@ body::before {
 /* ============================================ */
 /* RESPONSIVE (MÓVIL)                           */
 /* ============================================ */
-@media (max-width: 600px) {
+@media (max-width: 800px) {
     body {
         padding: 10px;
     }
@@ -1058,11 +1056,11 @@ body::before {
     }
     
     .info h3 {
-        font-size: 15px;
+        font-size: 22px;
     }
     
     .precio {
-        font-size: 18px;
+        font-size: 28px;
     }
     
     .buscador input {
@@ -1118,11 +1116,11 @@ body::before {
     }
     
     .info h3 {
-        font-size: 14px;
+        font-size: 22px;
     }
     
     .precio {
-        font-size: 16px;
+        font-size: 28px;
     }
     
     .btn-comprar-local, .btn-detalle {
