@@ -171,9 +171,9 @@ function limpiarParaWhatsApp(texto) {
     }
 }
     
-    // Número de teléfono (cambia por tu número con código de país)
+    // Número de teléfono (cambiar por el número con código de país)
     // Ejemplo: +5351234567 (Cuba)
-    const telefono = '+5358474815'; // ← CAMBIA ESTO POR TU NÚMERO
+    const telefono = 5358474815; // ← CAMBIA ESTO POR TU NÚMERO
     
     // Crear mensaje con los productos
     let mensaje = '🛒 *NUEVO PEDIDO* 🛒\n\n';
