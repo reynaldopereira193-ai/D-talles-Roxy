@@ -163,17 +163,19 @@ function enviarPedidoWhatsApp() {
     if (carrito.length === 0) {
         mostrarNotificacion('Tu carrito está vacío. Agrega productos primero.', 'warning');
         return;
+}
+
         // ========== LIMPIAR TEXTO PARA WHATSAPP ==========
 function limpiarParaWhatsApp(texto) {
     if (!texto) return '';
     // Eliminar caracteres peligrosos
     return texto.replace(/[&<>]/g, '').substring(0, 100);
     }
-}
+
     
     // Número de teléfono (cambiar por el número con código de país)
     // Ejemplo: +5351234567 (Cuba)
-    const telefono = 5358474815; // ← CAMBIA ESTO POR TU NÚMERO
+    const telefono = '5358474815'; // ← CAMBIA ESTO POR TU NÚMERO
     
     // Crear mensaje con los productos
     let mensaje = '🛒 *NUEVO PEDIDO* 🛒\n\n';
@@ -188,7 +190,7 @@ function limpiarParaWhatsApp(texto) {
     });
     
     mensaje += `*Total del pedido:* $${obtenerTotalCarrito().toFixed(2)}\n\n`;
-    mensaje += '*Datos del cliente:*\n';
+    mensaje += '*Por favor rellene estos datos:*\n';
     mensaje += 'Nombre: _________________\n';
     mensaje += 'Dirección: ______________\n';
     mensaje += 'Teléfono: _______________\n\n';
