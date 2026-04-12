@@ -156,10 +156,10 @@ function actualizarCarritoUI() {
     // Agregar botones de acción
     if (botonesContainer && carrito.length > 0) {
         botonesContainer.innerHTML = `
-            <button class="btn-whatsapp" onclick="enviarPedidoWhatsApp()">
-                 Enviar pedido por WhatsApp
+            <button class="btn-pedido" onclick="window.location.href='pedido.html'">
+                 Proceder al pedido
             </button>
-            <button class="btn-vaciar" onclick="vaciarCarrito(); renderizarProductos(); actualizarCarritoUI();">
+            <button class="btn-vaciar" onclick="vaciarCarrito()">
                 Vaciar Carrito
             </button>
         `;
