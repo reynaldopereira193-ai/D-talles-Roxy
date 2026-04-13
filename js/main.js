@@ -219,8 +219,6 @@ document.addEventListener('DOMContentLoaded', () => {
             renderizarProductos();
         });
 
-        // Añadir al final del archivo, dentro de DOMContentLoaded
-
 // Animación al hacer scroll
     const observerOptions = {
         threshold: 0.1,

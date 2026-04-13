@@ -1613,7 +1613,7 @@ body::before {
     width: 100%;
     padding: 12px;
     border-radius: 12px;
-    border: 1px solid var(--color-gray);
+    border: 1px solid var(--color-dark);
     background: var(--color-light);
     color: var(--color-dark);
     font-size: 15px;
@@ -1696,4 +1696,56 @@ body::before {
     color: var(--color-dark);
     margin-bottom: 20px;
     border: 1px dashed var(--color-dark);
+}
+
+/* Añadir al final del archivo pedido.css existente */
+
+.info-pedido {
+    background: var(--color-light);
+    padding: 12px 15px;
+    border-radius: 16px;
+    margin: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 14px;
+    border-left: 4px solid #32CD32;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.form-group.half {
+    flex: 1;
+}
+
+select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid var(--color-dark);
+    background: var(--color-light);
+    color: var(--color-dark);
+    font-size: 15px;
+    cursor: pointer;
+}
+
+select option {
+    background: var(--color-white);
+    color: var(--color-dark);
+}
+
+@media (max-width: 550px) {
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+    .info-pedido {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }

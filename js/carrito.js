@@ -1,6 +1,4 @@
-// ========== CARRITO DE COMPRAS (COMPARTIDO) ==========
-
-// ========== CARGAR CARRITO DE FORMA SEGURA ==========
+// ========== CARGAR CARRITO ==========
 let carrito = [];
 
 function cargarCarritoSeguro() {
