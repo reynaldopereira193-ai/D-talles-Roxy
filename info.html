@@ -35,7 +35,6 @@
     <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
-    
     <!-- ========== BARRA DE REDES SOCIALES (ENCIMA DEL HEADER) ========== -->
     <div class="top-social-bar">
         <div class="top-social-container">
@@ -74,24 +73,6 @@
             </div>
         </div>
     </div>
-
-    <!-- ========== CARRITO FLOTANTE ========== -->
-    <div class="carrito-icono" id="carrito-icono">
-        🛒 Carrito (<span id="carrito-contador">0</span>)
-    </div>
-    
-    <div class="overlay" id="overlay"></div>
-    
-    <!-- ========== CARRITO MODAL ========== -->
-    <div class="carrito-modal" id="carrito-modal">
-        <h3>Tu Carrito</h3>
-        <div id="carrito-items"></div>
-        <div class="total-carrito" id="carrito-total">Total: $0.00</div>
-        <div id="carrito-botones"></div>  <!-- ← NUEVO: contenedor para botones -->
-        <button onclick="cerrarCarrito()" style="margin-top: 10px; padding: 8px; width: 100%; background: #666; color: white; border: none; border-radius: 5px; cursor: pointer;">Cerrar</button>
-    </div>
-    
-    <!-- ========== HEADER ========== -->
     <div class="header-moderno">
         <div class="header-container">
             <div class="logo">
@@ -101,37 +82,53 @@
                     <p class="slogan">Tienda Oficial</p>
                 </div>
             </div>
-        
-            <!-- BUSCADOR -->
-            <div class="buscador-container">
-                <form id="buscador-form" class="buscador">
-                    <input type="text" id="buscar-input" placeholder="Buscar productos... 🔍" autocomplete="off">
-                    <button type="submit">Buscar</button>
-                </form>
-                <div id="resultados-busqueda" class="resultados-busqueda"></div>
-            </div>
-        
-            <!-- FILTROS POR CATEGORÍA -->
-            <div class="filtros">
-                <button class="filtro-btn activo" data-categoria="todos">Todos</button>
-                <button class="filtro-btn" data-categoria="Oficina">Oficina</button>
-                <button class="filtro-btn" data-categoria="Escuela">Escuela</button>
-                <button class="filtro-btn" data-categoria="Regalos">Regalos</button>
-            </div>
         </div>
     </div>
 
-    <!-- ========== CONTENEDOR DE PRODUCTOS ========== -->
-    <main class="contenedor" id="productos-container"></main>
+    <!-- INFO CONTAINER -->
+    <div class="info-container">
+        <a href="index.html" class="back-link">← Volver a la tienda</a>
 
-    <!-- ========== SCRIPTS ========== -->
-    <script src="js/carrito.js"></script>
-    <script src="js/productos.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/footer.js"></script>
+        <div id="comprar" class="info-section">
+            <h2>📦 Cómo comprar</h2>
+            <p>1. Navega por nuestro catálogo y agrega los productos que desees al carrito.</p>
+            <p>2. Revisa tu carrito y haz clic en "Proceder al pedido".</p>
+            <p>3. Completa tus datos (nombre, teléfono, dirección si necesitas envío).</p>
+            <p>4. Envía el pedido por WhatsApp y en breve nos comunicaremos contigo.</p>
+            <p>5. Realiza el pago contra entrega (efectivo o transferencia).</p>
+        </div>
 
-    <!-- ========== BOTÓN VOLVER ARRIBA ========== -->
-    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" id="scrollTopBtn" class="scroll-top-btn" title="Volver arriba">↑</button>
+        <div id="envios" class="info-section">
+            <h2>🚚 Envíos</h2>
+            <p>Realizamos envíos a toda La Habana a través de mensajería privada.</p>
+            <p>El costo del envío depende de la ubicación y el peso del paquete. Se calcula al momento de confirmar el pedido.</p>
+            <p>Los envíos se gestionan una vez acordado el pago. El tiempo estimado de entrega es de 2 a 5 días hábiles.</p>
+        </div>
+
+        <div id="devoluciones" class="info-section">
+            <h2>🔄 Devoluciones</h2>
+            <p>Aceptamos devoluciones dentro de los 7 días posteriores a la entrega, siempre que el producto esté en su estado original y con embalaje.</p>
+            <p>El cliente asume el costo del envío de vuelta. Una vez recibido y verificado, se reembolsa el importe del producto (no el envío original).</p>
+            <p>Para gestionar una devolución, contáctanos por WhatsApp con tu número de pedido.</p>
+        </div>
+
+        <div id="faq" class="info-section">
+            <h2>❓ Preguntas frecuentes</h2>
+            <ul>
+                <li><strong>¿Los precios incluyen envío?</strong> No, el envío se calcula aparte según la dirección.</li>
+                <li><strong>¿Cómo puedo pagar?</strong> Aceptamos efectivo contra entrega y transferencia bancaria.</li>
+                <li><strong>¿Qué hago si mi producto llega dañado?</strong> Contáctanos de inmediato con fotos y lo resolveremos.</li>
+                <li><strong>¿Puedo cambiar un producto?</strong> Sí, dentro de los 7 días, siempre que esté sin usar.</li>
+            </ul>
+        </div>
+
+        <div id="contacto" class="info-section">
+            <h2>📞 Contacto</h2>
+            <p>WhatsApp: <a href="https://wa.me/5358474815" target="_blank">+53 5 847 4815</a></p>
+            <p>Email: dtalless.roxy@gmail.com</p>
+            <p>Horario de atención: Lunes a viernes de 9:00 a 18:00, sábados de 9:00 a 13:00.</p>
+        </div>
+    </div>
 
     
     <!-- ========== FOOTER ========== -->
