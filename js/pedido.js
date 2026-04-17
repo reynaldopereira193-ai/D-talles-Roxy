@@ -127,18 +127,18 @@ document.addEventListener('DOMContentLoaded', () => {
             provincia = provinciaSelect.value;
             municipio = municipioSelect.value;
             if (!direccion || !provincia || !municipio) {
-                alert('Por favor, completa la dirección, provincia y municipio.');
+                mostrarNotificacion('❌ Por favor, escribe la dirección de envío.', 'error');
                 return;
             }
         }
 
         if (nombre === '' || apellido === '' || telefono === '') {
-        alert('Por favor, completa tu nombre, apellido y teléfono.');
+        mostrarNotificacion('❌ Por favor, completa tu nombre, apellido y teléfono.', 'error');
         return;
         }
 
         if (carrito.length === 0) {
-            alert('No hay productos en el carrito.');
+            mostrarNotificacion('🛒 No hay productos en el carrito. Agrega algunos primero.', 'warning');
             return;
         }
 
@@ -173,6 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Abrir WhatsApp
         const url = `https://wa.me/${numeroNegocio}?text=${encodeURIComponent(mensaje)}`;
+        mostrarNotificacion('📦 Pedido preparado. Ahora envía el mensaje por WhatsApp.', 'success');
         window.open(url, '_blank');
     }
 
