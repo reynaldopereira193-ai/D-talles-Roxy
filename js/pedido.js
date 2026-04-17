@@ -115,6 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function enviarPedido() {
         // Obtener datos del cliente
         const nombre = document.getElementById('nombre').value.trim();
+        const apellido = document.getElementById('apellido').value.trim();
         const telefono = document.getElementById('telefono').value.trim();
         const requiereMensajeria = checkbox.checked;
         let direccion = '';
@@ -131,9 +132,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        if (nombre === '' || telefono === '') {
-            alert('Por favor, completa tu nombre y teléfono.');
-            return;
+        if (nombre === '' || apellido === '' || telefono === '') {
+        alert('Por favor, completa tu nombre, apellido y teléfono.');
+        return;
         }
 
         if (carrito.length === 0) {
@@ -148,14 +149,14 @@ document.addEventListener('DOMContentLoaded', () => {
         let mensaje = `🛒 *NUEVO PEDIDO* 🛒\n`;
         mensaje += `*Código:* ${codigoPedido}\n`;
         mensaje += `*Fecha/Hora:* ${fechaHora}\n\n`;
-        mensaje += `*Cliente:* ${nombre}\n`;
+        mensaje += `*Cliente:* ${nombre} ${apellido}\n`;
         mensaje += `*Teléfono:* ${telefono}\n`;
         if (requiereMensajeria) {
             mensaje += `*Dirección:* ${direccion}\n`;
             mensaje += `*Provincia:* ${provincia}\n`;
             mensaje += `*Municipio:* ${municipio}\n`;
         } else {
-            mensaje += `*Mensajería:* No necesita envío (retira en local)\n`;
+            mensaje += `*Mensajería:* No necesita envío (retira en el local)\n`;
         }
         mensaje += `\n*PRODUCTOS:*\n`;
         let total = 0;
