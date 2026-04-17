@@ -31,7 +31,7 @@ function renderizarProductos() {
         return;
     }
     
-    container.innerHTML = productosFiltrados.map(producto => {
+    container.innerHTML = productosFiltrados.map((producto, index) => {
         // Verificar si el producto está en el carrito
         const itemEnCarrito = carrito.find(item => item.id === producto.id);
         const cantidadEnCarrito = itemEnCarrito ? itemEnCarrito.cantidad : 0;
@@ -40,7 +40,7 @@ function renderizarProductos() {
         const stockBajo = producto.stock > 0 && producto.stock <= 3;
         
         return `
-            <article class="producto">
+            <article class="producto" style="animation-delay: ${index * 0.1}s">
                 <img src="${producto.imagen}" alt="${producto.nombre}">
                 <div class="info">
                     <h3>${producto.nombre}</h3>
@@ -111,10 +111,20 @@ function actualizarCarritoUI() {
     const totalElement = document.getElementById('carrito-total');
     const itemsElement = document.getElementById('carrito-items');
     const botonesContainer = document.getElementById('carrito-botones');
+    const carritoIcono = document.getElementById('carrito-icono');
     
     const cantidadTotal = obtenerCantidadCarrito();
     if (contadorElement) {
         contadorElement.textContent = cantidadTotal;
+    }
+    
+    // Agregar animación al carrito cuando tiene items
+    if (carritoIcono) {
+        if (cantidadTotal > 0) {
+            carritoIcono.classList.add('tiene-items');
+        } else {
+            carritoIcono.classList.remove('tiene-items');
+        }
     }
     
     if (totalElement) {
