@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
             mensaje += `   Subtotal: $${subtotal.toFixed(2)}\n\n`;
         });
         mensaje += `*TOTAL:* $${total.toFixed(2)}\n\n`;
-        mensaje += `Gracias por tu compra. ¡En breve nos comunicamos!`;
+        mensaje += `Gracias por tu compra. ¡Espero que vuelva a comprar pronto!`;
 
         // Abrir WhatsApp
         const url = `https://wa.me/${numeroNegocio}?text=${encodeURIComponent(mensaje)}`;

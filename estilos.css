@@ -14,10 +14,10 @@
 
 /* ==========  VARIABLES GLOBALES ========== */
 :root {
-    --color-primary: #db427d;
-    --color-primary-dark: #ff008c;
-    --color-secondary: #ff7b00;
-    --color-secondary-dark: #ff7c01;
+    --color-primary: #ff0062;
+    --color-primary-dark: #88004b;
+    --color-secondary: #ffaf64;
+    --color-secondary-dark: #db6a00;
     --color-dark: #000000;
     --color-gray: #666;
     --color-light: #fcf7f7;
@@ -719,7 +719,7 @@ body::before {
     margin: 16px auto;
     padding: 8px 16px;
     background: white;
-    color: #e44d26;
+    color: var(--color-secondary-dark);
     text-decoration: none;
     border-radius: 30px;
     font-size: 14px;
